@@ -1,0 +1,22 @@
+﻿# Secrets and local environment
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.log
+watch_log.txt
+static_backup/
+backups/
+.pytest_cache/
+node_modules/
+
+# Empty extension placeholders
+browser_extension/background.js
+browser_extension/content.js
+browser_extension/manifest.json
+browser_extension/warning.html
+browser_extension/warning.js
+repair_scanr.ps1

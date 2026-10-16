@@ -1,0 +1,2 @@
+# one hostname per line, e.g.
+# evil-example.test
