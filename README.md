@@ -1,163 +1,96 @@
-<div align="center">
+::: {align="center"}
+`<img src="https://capsule-render.vercel.app/api?type=waving&color=0:050816,45:102A43,100:00C896&height=220&section=header&text=ScanR&fontSize=76&fontColor=FFFFFF&fontAlignY=35&desc=THREAT%20INTELLIGENCE%20%7C%20SECURITY%20ANALYSIS&descAlignY=58&descSize=16&animation=twinkling" width="100%" alt="ScanR cybersecurity banner" />`{=html}
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:050816,45:102A43,100:00C896&height=230&section=header&text=ScanR&fontSize=76&fontColor=FFFFFF&fontAlignY=35&desc=THREAT%20INTELLIGENCE%20%7C%20SECURITY%20ANALYSIS&descAlignY=58&descSize=16&animation=twinkling" width="100%" alt="Animated ScanR cybersecurity banner" />
+# ScanR
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2500&pause=800&color=00D9A5&center=true&vCenter=true&width=700&lines=Analyze+Suspicious+URLs;Investigate+Files+and+Hashes;Explore+Threat+Intelligence;Security+Analysis+Made+Clear" alt="Animated ScanR feature text" />
+**Analyze. Investigate. Understand.**
 
-<br/>
+A Python and Flask web application for supported URL, file, hash, and
+threat-intelligence workflows using VirusTotal API v3.
 
-<img src="https://img.shields.io/badge/SCANR-CYBERSECURITY-00C896?style=for-the-badge&logo=shield&logoColor=white" alt="ScanR cybersecurity" />
-<img src="https://img.shields.io/badge/Python-Flask-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Flask" />
-<img src="https://img.shields.io/badge/Intelligence-VirusTotal-394EFF?style=for-the-badge" alt="VirusTotal" />
-<img src="https://img.shields.io/badge/Status-Development-orange?style=for-the-badge" alt="Development status" />
+[Repository](https://github.com/GhostMaskR/ScanR) ·
+[Installation](#installation) · [API Reference](#api-reference) ·
+[Security](#security-notes)
 
-<br/><br/>
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-Web%20Application-000000?style=for-the-badge&logo=flask&logoColor=white)
+![VirusTotal](https://img.shields.io/badge/Threat%20Intelligence-VirusTotal-394EFF?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Development-orange?style=for-the-badge)
+:::
 
-**A web-based platform for URL, file and hash analysis using VirusTotal intelligence.**
+> **Project status:** ScanR is under active development. Core unit tests
+> and the Phase 2 smoke test have passed in the current development
+> environment. End-to-end VirusTotal scanning through the central
+> gateway still requires verification. Feature availability depends on
+> configuration, implementation, VirusTotal permissions, and API limits.
 
-[Explore Repository](https://github.com/GhostMaskR/ScanR) · [Installation](#-installation) · [API Reference](#-api-reference) · [Security](#-security)
+## Overview
 
-</div>
+ScanR brings supported security-analysis workflows into one Flask web
+interface. It includes URL analysis, file analysis, hash lookups,
+relationship queries, scan-history routes, and application status
+checks.
 
----
+VirusTotal provides threat-intelligence data; it does not guarantee that
+an item is safe or malicious. Results can vary with the submitted item,
+available vendor detections, analysis time, API permissions, and service
+response.
 
-<div align="center">
+## Features
 
-![Animated divider](https://capsule-render.vercel.app/api?type=rect&color=0:00C896,100:102A43&height=3&section=header)
+-   **URL analysis** --- submit a URL through the supported scanning
+    workflow.
+-   **File analysis** --- analyze supported files through the backend.
+-   **Hash lookup** --- look up supported file hashes when VirusTotal
+    has a matching record.
+-   **Relationship queries** --- request supported file or URL
+    relationships where available to the configured API account.
+-   **Scan history** --- use the configured database-backed history
+    workflows.
+-   **Status and health checks** --- inspect application and module
+    status.
+-   **Central or direct VirusTotal configuration** --- use a configured
+    ScanR central gateway, or a local VirusTotal API key.
 
-</div>
+Protection, feed, and extension-related components should be treated as
+separate features until they have been tested in the intended
+environment.
 
-## `01` — Overview
+## Technology stack
 
-**ScanR** is a cybersecurity development project built with Python and Flask. It brings supported URL, file and hash analysis workflows together with VirusTotal threat-intelligence lookups.
+-   Python and Flask
+-   HTML, CSS, and JavaScript
+-   SQLite/database components
+-   Requests and python-dotenv
+-   VirusTotal API v3
+-   Git and GitHub
 
-The aim is to make security investigation easier through a web interface, backend scanning modules and supporting database components.
+## Architecture
 
-> **Development notice:** ScanR is still under development. Each module must be configured and tested independently. Features listed here describe repository components and are not a guarantee of production readiness.
-
-## `02` — What ScanR Helps You Do
-
-ScanR groups common first-pass threat-intelligence checks into one local web application:
-
-- **URL analysis:** submit a URL to retrieve the analysis supported by the current URL-scanning implementation and VirusTotal.
-- **File analysis:** submit a file through the file-analysis endpoint and inspect the available report.
-- **Hash lookup:** query a file hash without uploading the original file, when a matching VirusTotal record is available.
-- **Relationship lookups:** query supported file relationships, such as related domains, where the API and account permissions allow it.
-- **Scan history:** access saved scan-history records through the history endpoints, where supported by the configured database.
-- **Local status checks:** inspect application and module status through the health/status endpoints.
-
-**Important distinction:** VirusTotal is an intelligence source, not a guarantee that a submitted item is safe or malicious. Results depend on the item, the available vendors, the time of analysis, the API plan and the response returned by VirusTotal.
-
-## `03` — Feature Matrix
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### <img src="https://img.shields.io/badge/01-URL%20Analysis-00C896?style=flat-square" alt="URL Analysis"/>
-
-Submit URLs through the supported analysis workflow to investigate available threat-intelligence results.
-
-</td>
-<td width="50%" valign="top">
-
-### <img src="https://img.shields.io/badge/02-File%20Analysis-00C896?style=flat-square" alt="File Analysis"/>
-
-Use the file-analysis components to inspect supported files through the backend.
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### <img src="https://img.shields.io/badge/03-Hash%20Lookup-00C896?style=flat-square" alt="Hash Lookup"/>
-
-Query supported file hashes against available VirusTotal intelligence.
-
-</td>
-<td width="50%" valign="top">
-
-### <img src="https://img.shields.io/badge/04-Threat%20Intelligence-00C896?style=flat-square" alt="Threat Intelligence"/>
-
-Use VirusTotal API v3 for supported analysis and relationship lookups.
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### <img src="https://img.shields.io/badge/05-Web%20Dashboard-00C896?style=flat-square" alt="Web Dashboard"/>
-
-Access the supported scanning workflows through the Flask-served web interface.
-
-</td>
-<td width="50%" valign="top">
-
-### <img src="https://img.shields.io/badge/06-Database%20Components-00C896?style=flat-square" alt="Database Components"/>
-
-The repository includes database components for local application data and scan-history workflows.
-
-</td>
-</tr>
-</table>
-
-### Protection components
-
-The repository also includes protection and feed-related modules. Browser protection, automatic monitoring and other protection features should be treated as **separate components requiring verification** before use.
-
-## `04` — Technology Stack
-
-<div align="center">
-
-<img src="https://skillicons.dev/icons?i=python,flask,html,css,js,sqlite,git,github&theme=dark" alt="Python, Flask, HTML, CSS, JavaScript, SQLite, Git and GitHub technology icons" />
-
-<br/><br/>
-
-![Requests](https://img.shields.io/badge/Requests-HTTP%20Client-2C5BB4?style=flat-square)
-![VirusTotal](https://img.shields.io/badge/VirusTotal-API%20v3-394EFF?style=flat-square)
-![dotenv](https://img.shields.io/badge/python--dotenv-Configuration-3776AB?style=flat-square)
-
-</div>
-
-## `05` — System Architecture
-
-```mermaid
+``` mermaid
 flowchart TD
-    U["User"] --> UI["ScanR Web Interface"]
-    UI --> API["Flask Backend"]
-    API --> URL["URL Analysis"]
-    API --> FILE["File Analysis"]
-    API --> HASH["Hash Lookup"]
-    URL --> VT["VirusTotal API v3"]
+    U[User] --> UI[ScanR Web Interface]
+    UI --> APP[Flask Backend]
+    APP --> URL[URL Analysis]
+    APP --> FILE[File Analysis]
+    APP --> HASH[Hash Lookup]
+    URL --> VT[ScanR Central Gateway or VirusTotal API v3]
     FILE --> VT
     HASH --> VT
-    VT --> RESULT["Analysis Response"]
+    VT --> RESULT[Analysis Response]
     RESULT --> UI
-    API -. "Supported database workflows" .-> DB[("Local Database")]
-
-    style U fill:#102A43,stroke:#00C896,color:#FFFFFF
-    style UI fill:#102A43,stroke:#00C896,color:#FFFFFF
-    style API fill:#102A43,stroke:#00C896,color:#FFFFFF
-    style VT fill:#263B9A,stroke:#7D9BFF,color:#FFFFFF
-    style RESULT fill:#064E3B,stroke:#00C896,color:#FFFFFF
+    APP -. Supported history workflows .-> DB[(Local Database)]
 ```
 
-<details>
-<summary><strong>How the workflow operates</strong></summary>
+In central mode, ScanR sends supported VirusTotal requests to the
+configured gateway. The gateway should keep its VirusTotal key
+server-side; the key must never be placed in frontend code or committed
+to the repository. In direct mode, ScanR uses the local `VT_API_KEY`
+setting.
 
-1. The user interacts with the web interface.
-2. Flask routes the request to the appropriate analysis component.
-3. The relevant scanner communicates with VirusTotal when required.
-4. The backend processes the response and returns available results.
-5. Supported database routes handle local application data.
+## Repository structure
 
-Exact request formats, error handling and API permissions depend on the implementation.
-
-</details>
-
-## `06` — Repository Structure
-
-```text
+``` text
 ScanR/
 ├── app.py
 ├── requirements.txt
@@ -170,265 +103,346 @@ ScanR/
 │   ├── relations_api.py
 │   ├── url_scanner.py
 │   └── virustotal.py
-├── scanr_protection/
 ├── static/
 │   └── index.html
-├── files/
 ├── tests/
 ├── reports/
 ├── LICENSE
 └── README.md
 ```
 
-This is a simplified overview. Additional scripts and modules may exist in the repository.
+This is a simplified overview; the repository may contain additional
+modules and scripts.
 
-## `07` — Installation
+## Installation
 
 ### Requirements
 
-- Python 3.10 or newer recommended
-- Git
-- Internet connection for VirusTotal lookups
-- Your own VirusTotal API key
+-   Python 3.10 or newer recommended
+-   Git
+-   Internet access for online threat-intelligence lookups
+-   Either a configured ScanR central gateway URL or your own VirusTotal
+    API key
 
-### Step 1 — Clone
+### 1. Clone the repository
 
-```bash
+``` bash
 git clone https://github.com/GhostMaskR/ScanR.git
 cd ScanR
 ```
 
-### Step 2 — Create a virtual environment
+### 2. Create and activate a virtual environment
 
 **Windows PowerShell**
 
-```powershell
+``` powershell
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-If activation is blocked, allow it only for the current PowerShell process:
+If PowerShell blocks activation, allow it for the current process only:
 
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+``` powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 .\.venv\Scripts\Activate.ps1
 ```
 
-**Linux / macOS**
+**Linux/macOS**
 
-```bash
+``` bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-### Step 3 — Install dependencies
+### 3. Install dependencies
 
-```bash
+``` bash
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### Step 4 — Configure your API key
+### 4. Configure ScanR
 
-Create a local `.env` file in the project root:
+Create a local `.env` file in the repository root. Start with
+`.env.example`, then configure **one** of the supported modes.
 
-```dotenv
+**Option A --- Central gateway**
+
+``` dotenv
+SCANR_CENTRAL_API_URL=https://your-deployed-scanr-gateway.example
+```
+
+Replace the example with the real HTTPS URL of a gateway you are
+authorized to use. A central gateway must be deployed, reachable,
+configured with a server-side VirusTotal key, and protected against
+abuse. The placeholder URL is not a working service.
+
+**Option B --- Direct VirusTotal API**
+
+``` dotenv
 VT_API_KEY=your_own_virustotal_api_key
 ```
 
-Replace the placeholder with your own VirusTotal API key.
+Use your own valid key. Keep `.env` local and untracked. Never put a
+real key in frontend code, screenshots, issues, README files, or
+commits.
 
-**Never publish your real `.env` file or API key.** Keep `.env.example` limited to placeholder values.
+### 5. Start the application
 
-### Step 5 — Run ScanR
-
-```powershell
+``` powershell
 python app.py
 ```
 
-Open the local URL shown in the terminal. If Flask uses its default local development address, it is commonly:
+Open the local address printed by Flask. The default development address
+is commonly `http://127.0.0.1:5000`.
 
-`http://127.0.0.1:5000`
+> Run the Flask development server locally only. Public deployment
+> requires production-grade hosting, access controls, rate limiting,
+> logging, and a security review.
 
-If startup fails, check dependencies, environment variables, terminal errors and API permissions.
+## API reference
 
-## `08` — API Reference
+These routes are present in the current application structure. For exact
+request schemas and response fields, check the corresponding route
+handlers in the current code.
 
-The following routes are present in the current ScanR application structure. Request bodies and response fields can evolve with the implementation, so use the route handlers as the final authority before writing integrations.
+  --------------------------------------------------------------------------------------
+  Method                  Endpoint                               Purpose
+  ----------------------- -------------------------------------- -----------------------
+  `GET`                   `/`                                    Web interface
 
-| Endpoint | Purpose |
-|---|---|
-| `GET /` | Web interface |
-| `GET /health` | Health check |
-| `GET /api/status` | Application/scanner status |
-| `GET /api/history` | Scan history |
-| `GET /api/history/<scan_id>` | Individual history entry |
-| `POST /api/scan/url` | URL-analysis workflow |
-| `POST /api/scan/file` | File-analysis workflow |
-| `POST /api/scan/hash` | Hash-analysis workflow |
-| `GET /api/file/<resource_id>/<relation>` | File relationship lookup |
-| `POST /api/relations` | Relationship query |
-| `GET /api/relations/status` | Relationship module status |
+  `GET`                   `/health`                              Application health
+                                                                 check
 
-### Example local API calls
+  `GET`                   `/api/status`                          Application and scanner
+                                                                 configuration status
 
-These examples show the general shape of a local request. Confirm the exact JSON fields accepted by the current route handler before relying on them in automation.
+  `GET`                   `/api/history`                         Scan history
 
-**Check application status**
+  `GET`                   `/api/history/<scan_id>`               Individual history
+                                                                 entry
 
-```powershell
-Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/status" -Method Get
+  `POST`                  `/api/scan/url`                        URL analysis
+
+  `POST`                  `/api/scan/file`                       File analysis
+
+  `POST`                  `/api/scan/hash`                       Hash analysis
+
+  `GET`                   `/api/file/<resource_id>/<relation>`   File relationship
+                                                                 lookup
+
+  `POST`                  `/api/relations`                       Relationship query
+
+  `GET`                   `/api/relations/status`                Relationship module
+                                                                 status
+  --------------------------------------------------------------------------------------
+
+### Useful local checks
+
+``` powershell
+Invoke-RestMethod -Uri "http://127.0.0.1:5000/health"
+Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/status"
+Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/history"
 ```
 
-**Check the health endpoint**
+For URL, file, hash, and relationship scans, inspect the relevant route
+to confirm required JSON keys, form fields, limits, and error responses.
+VirusTotal may return errors or no report when an item is unknown, an
+endpoint is unavailable, an API limit is reached, or the account lacks
+permission.
 
-```powershell
-Invoke-RestMethod -Uri "http://127.0.0.1:5000/health" -Method Get
+## Testing
+
+From the repository root, run the built-in tests:
+
+``` powershell
+python -m unittest discover -s tests -p "test_*.py" -v
+python -m tests.phase2_smoke_test
 ```
 
-**Read scan history**
+In the current development environment, the reported results were:
 
-```powershell
-Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/history" -Method Get
+-   10 unit tests passed.
+-   Phase 2 smoke test printed `CORE_TESTS_OK`.
+-   Python syntax checks passed for `app.py`, `scanner/virustotal.py`,
+    and `scanner/relations_api.py`.
+-   `git diff --cached --check` passed before the integration commit.
+
+These checks do **not** establish that every feature works on every
+machine. In particular, perform an end-to-end URL or file scan through
+the configured gateway before claiming that central VirusTotal scanning
+is verified.
+
+### Manual verification checklist
+
+-   [ ] Dependencies install successfully in a fresh virtual
+    environment.
+-   [ ] `.env` contains a valid central gateway URL or local VirusTotal
+    key.
+-   [ ] Flask starts and `/health` responds.
+-   [ ] The homepage opens.
+-   [ ] URL analysis handles valid and invalid input without crashing.
+-   [ ] File analysis handles permitted test files and reports errors
+    clearly.
+-   [ ] Hash lookup handles valid hashes and missing reports.
+-   [ ] History endpoints work with empty and populated history.
+-   [ ] Relationship endpoints handle unsupported relationships and
+    upstream errors.
+-   [ ] A real, harmless test URL is successfully processed through the
+    intended VirusTotal configuration.
+
+Use only harmless, authorized test inputs. Do not mark checks complete
+unless they have actually been run.
+
+## Security notes
+
+-   **Protect API keys.** Keep `.env` out of Git. Commit only
+    placeholders in `.env.example`.
+-   **Protect the gateway.** A shared gateway must keep its VirusTotal
+    key server-side and enforce rate limits and suitable access
+    controls. Do not expose an unrestricted personal API key through a
+    public endpoint.
+-   **Keep Flask local by default.** Do not expose the development
+    server directly to the public internet.
+-   **Consider privacy.** Sending URLs, files, or identifiers to
+    VirusTotal shares data with an external service. Do not submit
+    confidential material without authorization.
+-   **Interpret results carefully.** Zero detections or a missing report
+    does not prove an item is safe.
+-   **Respect quotas and permissions.** VirusTotal endpoints and
+    relationships may be limited by account plan and API terms.
+-   **Do not treat ScanR as a full antivirus or EDR replacement.** It is
+    a development project for supported analysis workflows.
+
+If an API key has been exposed, revoke or rotate it through the
+provider's official account controls.
+
+## Roadmap
+
+-   [ ] Verify central-gateway URL, file, hash, and relationship scans
+    end to end.
+-   [ ] Expand automated tests for gateway errors, timeouts, and API
+    limits.
+-   [ ] Add genuine screenshots from a running instance.
+-   [ ] Improve setup and troubleshooting documentation.
+-   [ ] Verify protection, feed, and extension components separately.
+-   [ ] Review deployment security before any public hosting.
+
+## Contributing
+
+1.  Fork [GhostMaskR/ScanR](https://github.com/GhostMaskR/ScanR).
+2.  Create a branch for a focused change.
+3.  Keep secrets, local databases, scan artifacts, and private reports
+    out of commits.
+4.  Run relevant tests and manually verify affected workflows.
+5.  Update documentation when behavior or configuration changes.
+6.  Open a pull request with the problem, changes, and actual test
+    results.
+
+Please do not describe a feature as complete unless its implementation
+and expected behavior have been verified.
+
+## Troubleshooting
+
+```{=html}
+<details>
 ```
-
-For URL, file, hash and relationship scans, check the corresponding route in `app.py` or `scanner/relations_api.py` for the required form fields, JSON keys and error responses. Avoid guessing a payload schema from the endpoint name alone.
-
-Some relationship queries may be restricted by the VirusTotal account or API plan, and an upstream `403` response may indicate insufficient permissions rather than a local application defect.
-
-## `09` — Screenshots & Demo
-
-<div align="center">
-
-| Dashboard | Analysis Results |
-|---|---|
-| Add `docs/screenshots/dashboard.png` | Add `docs/screenshots/results.png` |
-
-</div>
-
-> These are screenshot placeholders, not existing images. Replace them with genuine screenshots from a running ScanR instance.
-
-## `10` — Testing & Verification
-
-Run the test suite from the repository root if the project has the test dependencies installed:
-
-```powershell
-python -m pytest
+```{=html}
+<summary>
 ```
-
-If `pytest` is not installed, install it in the active virtual environment with `python -m pip install pytest`, then run the command again. A test command that reports “no tests ran” is not the same as a passing test suite.
-
-### Manual smoke-test checklist
-
-- [ ] The virtual environment activates successfully.
-- [ ] `pip install -r requirements.txt` completes without errors.
-- [ ] `python app.py` starts the Flask application.
-- [ ] `GET /health` returns a response.
-- [ ] `GET /api/status` reports the current configuration state.
-- [ ] The homepage opens at `http://127.0.0.1:5000`.
-- [ ] URL analysis handles valid input and invalid input without crashing.
-- [ ] File analysis handles a permitted test file and reports errors clearly.
-- [ ] Hash lookup handles a valid hash and a hash with no available report.
-- [ ] Scan history endpoints return a sensible response when history is empty and when records exist.
-- [ ] Relationship endpoints handle unsupported relationships and upstream API errors.
-- [ ] Missing or invalid API-key configuration is handled without exposing secrets.
-
-Use harmless, authorized test inputs. Record actual results instead of marking checks complete without running them.
-
-## `11` — Security & Privacy Notes
-
-- **Use your own API key.** ScanR is intended for local use: each user should configure their own VirusTotal API key in a local `.env` file.
-- **Never commit secrets.** Do not commit `.env`, API keys, tokens, private reports or other sensitive local data. Keep `.env.example` limited to placeholder values.
-- **Keep the app local by default.** Do not expose Flask's development server directly to the public internet. Public deployment requires a separate security review and production-grade hosting configuration.
-- **Respect authorization.** Analyze only files, URLs and systems you are permitted to investigate.
-- **Understand external sharing.** Submitting a URL, file or hash to VirusTotal involves sending data or identifiers to an external service. Review your organization's privacy requirements before submitting sensitive material.
-- **Interpret results carefully.** Zero detections, harmless classifications, undetected results or missing reports do not prove that an item is safe.
-- **Respect quotas and terms.** API access and relationship availability depend on VirusTotal's current terms, plan and permissions.
-- **Review protection modules.** Treat protection/feed/extension components as separate functionality until each component has been tested in the intended environment.
-- **Do not treat ScanR as a full EDR/antivirus replacement.** It is a development project for supported analysis workflows, not a guarantee of complete endpoint protection.
-
-### API-key setup reminder
-
-The local `.env` file should contain your own key and remain untracked:
-
-```dotenv
-VT_API_KEY=your_own_virustotal_api_key
+`<strong>`{=html}ScanR does not start`</strong>`{=html}
+```{=html}
+</summary>
 ```
+Activate the virtual environment, install `requirements.txt`, run
+`python app.py` from the repository root, and inspect the complete
+terminal error. Confirm the Python version and installed dependencies.
 
-If a key is accidentally published, revoke or rotate it through the provider's official account controls.
-
-## `12` — Roadmap
-
-- [ ] Add real application screenshots.
-- [ ] Expand automated tests and error handling.
-- [ ] Improve setup and troubleshooting documentation.
-- [ ] Verify protection modules and document their exact capabilities.
-- [ ] Complete and test planned browser-extension integration.
-
-## `13` — Contributing
-
-Contributions, bug reports and focused improvements are welcome.
-
-1. Fork [GhostMaskR/ScanR](https://github.com/GhostMaskR/ScanR).
-2. Create a branch for one focused change.
-3. Keep changes scoped; avoid committing `.env`, databases, scan artifacts or private reports.
-4. Run relevant tests and manually verify affected workflows.
-5. Update documentation when endpoints, configuration or behavior change.
-6. Open a pull request with the problem, the implementation summary, test commands and actual results.
-
-Please do not describe a feature as complete unless its implementation and expected behavior have been verified.
-
-## FAQ & Troubleshooting
-
-<details>
-<summary><strong>ScanR does not start</strong></summary>
-
-Activate the virtual environment, install `requirements.txt`, run `python app.py` from the repository root and inspect the full terminal error. Confirm that the configured Python version is compatible with the dependencies.
-
+```{=html}
 </details>
-
+```
+```{=html}
 <details>
-<summary><strong>The API key is not detected</strong></summary>
+```
+```{=html}
+<summary>
+```
+`<strong>`{=html}The API key or gateway is not
+detected`</strong>`{=html}
+```{=html}
+</summary>
+```
+Confirm `.env` is in the project root and the variable is spelled
+exactly `VT_API_KEY` or `SCANR_CENTRAL_API_URL`. Check that the gateway
+URL uses HTTPS and points to a deployed service. Do not paste secrets
+into an issue or screenshot.
 
-Confirm that `.env` is in the project root, the variable is spelled `VT_API_KEY`, there are no extra quotation marks or spaces in the key value, and the app is started from the expected project directory. Never paste the real key into an issue or screenshot.
-
+```{=html}
 </details>
-
+```
+```{=html}
 <details>
-<summary><strong>A URL or hash has no report</strong></summary>
+```
+```{=html}
+<summary>
+```
+`<strong>`{=html}A URL or hash has no report`</strong>`{=html}
+```{=html}
+</summary>
+```
+VirusTotal may not have a report for every item. A missing report is not
+the same as a clean result. Check the input format and the response
+returned by ScanR.
 
-VirusTotal may not have a report for every item. A missing report is not the same as a clean result. Verify the input format and inspect the response/error details returned by ScanR.
-
+```{=html}
 </details>
-
+```
+```{=html}
 <details>
-<summary><strong>A relationship request returns 403</strong></summary>
+```
+```{=html}
+<summary>
+```
+`<strong>`{=html}A relationship request returns 403`</strong>`{=html}
+```{=html}
+</summary>
+```
+The requested relationship may not be available to the configured
+VirusTotal account or plan. Check the provider's current permissions and
+API documentation.
 
-The requested VirusTotal relationship may not be available to your API account or plan. Check the provider's current API documentation and permissions before assuming the local route is broken.
-
+```{=html}
 </details>
-
+```
+```{=html}
 <details>
-<summary><strong>Can I use one shared API key for everyone?</strong></summary>
+```
+```{=html}
+<summary>
+```
+`<strong>`{=html}Can every user use the same central
+gateway?`</strong>`{=html}
+```{=html}
+</summary>
+```
+Only if the gateway operator intentionally provides access, has
+configured a server-side key, and has suitable rate limits and abuse
+protections. A repository clone alone does not grant gateway access.
+Otherwise, configure your own VirusTotal API key in the local `.env`
+file.
 
-The documented setup is for local use with each user configuring their own key. Do not place a personal key in the frontend, publish it in the repository or distribute it to other users.
-
+```{=html}
 </details>
-
+```
 ## License
 
 See the repository's [LICENSE](LICENSE) file for the applicable terms.
 
----
-
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00C896,55:102A43,100:050816&height=120&section=footer&animation=twinkling" width="100%" alt="Animated ScanR footer" />
-
-**ScanR — Analyze. Investigate. Understand.**
+::: {align="center"}
+**ScanR --- Analyze. Investigate. Understand.**
 
 [GitHub Repository](https://github.com/GhostMaskR/ScanR)
 
-<sub>Cybersecurity development project · Built with Python and Flask</sub>
-
-</div>
+`<sub>`{=html}Cybersecurity development project · Built with Python and
+Flask`</sub>`{=html}
+:::
