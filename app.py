@@ -89,7 +89,12 @@ def api_status():
         "api_version": "v1",
         "status": "ready",
         "virustotal_key_configured": bool(
-            os.getenv("VT_API_KEY", "").strip()
+            os.getenv("SCANR_CENTRAL_API_URL", "").strip()
+            or os.getenv("VT_API_KEY", "").strip()
+        ),
+        "virustotal_mode": (
+            "central" if os.getenv("SCANR_CENTRAL_API_URL", "").strip()
+            else ("direct" if os.getenv("VT_API_KEY", "").strip() else "unconfigured")
         ),
         "total_saved_scans": count_scans(),
     })
