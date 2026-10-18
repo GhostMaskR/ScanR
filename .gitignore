@@ -1,4 +1,4 @@
-﻿# Secrets and local environment
+# Secrets and local environment
 .env
 .env.*
 !.env.example
@@ -20,3 +20,6 @@ browser_extension/manifest.json
 browser_extension/warning.html
 browser_extension/warning.js
 repair_scanr.ps1
+*.db
+*.sqlite
+*.sqlite3
